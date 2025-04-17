@@ -1,0 +1,43 @@
+name: MIG
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  HEADLESS_MODE: true
+
+
+jobs:
+  run-mig:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone MIG
+        run: |
+          git clone --recurse-submodules https://github.com/stfbk/mig.git
+
+      - name: Build and run all components
+        run: |
+          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          chmod +x build_and_run.sh
+          ./build_and_run.sh
+
+      - name: Wait for the server to start
+        run: sleep 5
+
+      - name: Run script to send API test requests
+        run: |
+          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          docker exec spid-cie-oidc-django-burpsuite-1 chmod +x run_tests.sh
+          # In this example, all passive tests related RP are run;
+          # the tests come from /input/mig-t/tests/single/ folder
+          # sessions are discovered form /input/mig-t/sessions/
+          docker exec spid-cie-oidc-django-burpsuite-1 /run_tests.sh RP -p
+          # The output is copied from container
+          docker cp spid-cie-oidc-django-burpsuite-1:/output.json output.json
+
+      - name: Print result
+        run: cat testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/output.json
+
