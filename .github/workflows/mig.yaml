@@ -14,21 +14,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone MIG
+      - name: Install Python
         run: |
-          git clone --recurse-submodules https://github.com/simone36050/mig.git
-          cd mig
-          git checkout headless2
-          cd ..
+          sudo apt update
+          sudo apt install python3, python3-pip
 
-      - name: Build and run all components
+      - name: Install dependencies
         run: |
-          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
-          chmod +x build_and_run.sh
-          ./build_and_run.sh
+          cd tools/testplan-to-mr
+          pip install -r requirements.txt
+          python testplan-to-mr.py --django
 
-      - name: Wait for the server to start
-        run: sleep 5
+      # - name: Clone MIG
+      #   run: |
+      #     git clone --recurse-submodules https://github.com/simone36050/mig.git
+      #     cd mig
+      #     git checkout headless2
+      #     cd ..
+
+      # - name: Build and run all components
+      #   run: |
+      #     cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+      #     chmod +x build_and_run.sh
+      #     ./build_and_run.sh
+
+      # - name: Wait for the server to start
+      #   run: sleep 5
 
       # - name: Run script to send API test requests
       #   run: |
