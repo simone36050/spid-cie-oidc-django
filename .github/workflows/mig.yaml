@@ -62,7 +62,7 @@ jobs:
       - name: Run Tests
         run: |
           cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
-          python execute.py input/mig-t/Passive.json sessions --only-validate
+          python execute.py input/mig-t/configured_tests/single/Passive.json input/mig-t/sessions --only-validate
 
       # - name: Run script to send API test requests
       #   run: |
