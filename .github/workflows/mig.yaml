@@ -21,26 +21,23 @@ jobs:
           git checkout headless2
           cd ..
         
-      # - name: Generate Tests
-      #   run: |
-      #     cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
-      #     bash generate_mr.sh --django
+      - name: Generate Tests
+        run: |
+          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          bash generate_mr.sh --django
 
-      # - name: Build and run all components
-      #   run: |
-      #     cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
-      #     chmod +x build_and_run.sh
-      #     ./build_and_run.sh
+      - name: Build and run all components
+        run: |
+          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          chmod +x build_and_run.sh
+          ./build_and_run.sh
 
-      # - name: Wait for the server to start
-      #   run: sleep 5
+      - name: Wait for the server to start
+        run: sleep 5
 
       - name: Run Tests
         run: |
           cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
-          ls -la
-          ls -la input
-          ls -la input/mig-t
-          ls -la input/mig-t/tests
-          ls -la input/mig-t/tests/single
           python execute.py input/mig-t/tests/single/Passive.json input/mig-t/sessions --only-validate
+
+
