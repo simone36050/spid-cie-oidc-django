@@ -26,17 +26,28 @@ jobs:
           git checkout headless2
           cd ..
 
-      - name: Install dependencies
+
+        # cd mig/tools/testplan-to-mr
+        # bash build.sh
+        # cd 
+        
+      - name: Generate Tests
         run: |
-          cd mig/tools/testplan-to-mr
-          pip install -r requirements.txt
-          mkdir input
-          cp ../../testplans/spid-cie-oidc/testplan.csv input/testplan.csv
-          mkdir input/templates
-          cp ../../testplans/spid-cie-oidc/config/testplan-to-mr/templates/* input/templates/
-          ls -la
-          python testplan-to-mr.py --django
-          ls -la
+          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          bash generate_mr.sh
+
+
+      # - name: Install dependencies
+      #   run: |
+      #     cd mig/tools/testplan-to-mr
+      #     pip install -r requirements.txt
+      #     mkdir input
+      #     cp ../../testplans/spid-cie-oidc/testplan.csv input/testplan.csv
+      #     mkdir input/templates
+      #     cp ../../testplans/spid-cie-oidc/config/testplan-to-mr/templates/* input/templates/
+      #     ls -la
+      #     python testplan-to-mr.py --django
+      #     ls -la
 
 
       # - name: Build and run all components
