@@ -30,7 +30,8 @@ jobs:
         run: |
           cd mig/tools/testplan-to-mr
           pip install -r requirements.txt
-          cp ../../testplans/spid-cie-oidc/testplan.csv testplan.csv
+          mkdir input
+          cp ../../testplans/spid-cie-oidc/testplan.csv input/testplan.csv
           ls -la
           python testplan-to-mr.py --django
           ls -la
