@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd tools/testplan-to-mr
+          cd mig/tools/testplan-to-mr
           pip install -r requirements.txt
           python testplan-to-mr.py --django
 
