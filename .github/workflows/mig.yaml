@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Clone MIG
         run: |
-          git clone --recurse-submodules https://github.com/stfbk/mig.git
+          git clone --recurse-submodules https://github.com/simone36050/mig.git
           cd mig
           git checkout headless2
           cd ..
