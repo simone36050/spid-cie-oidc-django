@@ -38,4 +38,7 @@ jobs:
       - name: Run Tests
         run: |
           cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          ls -la
+          ls -la input
+          ls -la input/mig-t
           python execute.py input/mig-t/configured_tests/single/Passive.json input/mig-t/sessions --only-validate
