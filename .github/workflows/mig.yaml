@@ -41,4 +41,6 @@ jobs:
           ls -la
           ls -la input
           ls -la input/mig-t
+          ls -la input/mig-t/tests
+          ls -la input/mig-t/tests/single
           python execute.py input/mig-t/tests/single/Passive.json input/mig-t/sessions --only-validate
