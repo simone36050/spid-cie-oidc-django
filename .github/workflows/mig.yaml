@@ -19,18 +19,19 @@ jobs:
       #     sudo apt update
       #     sudo apt install python3, python3-pip
 
+      - name: Clone MIG
+        run: |
+          git clone --recurse-submodules https://github.com/simone36050/mig.git
+          cd mig
+          git checkout headless2
+          cd ..
+
       - name: Install dependencies
         run: |
           cd mig/tools/testplan-to-mr
           pip install -r requirements.txt
           python testplan-to-mr.py --django
 
-      # - name: Clone MIG
-      #   run: |
-      #     git clone --recurse-submodules https://github.com/simone36050/mig.git
-      #     cd mig
-      #     git checkout headless2
-      #     cd ..
 
       # - name: Build and run all components
       #   run: |
