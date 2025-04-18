@@ -17,6 +17,9 @@ jobs:
       - name: Clone MIG
         run: |
           git clone --recurse-submodules https://github.com/stfbk/mig.git
+          cd mig
+          git checkout headless2
+          cd ..
 
       - name: Build and run all components
         run: |
