@@ -26,11 +26,11 @@ jobs:
           cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
           bash generate_mr.sh --django
 
-      # - name: Build and run all components
-      #   run: |
-      #     cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
-      #     chmod +x build_and_run.sh
-      #     ./build_and_run.sh
+      - name: Build and run all components
+        run: |
+          cd mig/testplans/spid-cie-oidc/implementations/spid-cie-oidc-django/
+          chmod +x build_and_run.sh
+          ./build_and_run.sh
 
       - name: Wait for the server to start
         run: sleep 5
