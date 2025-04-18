@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Clone MIG
-      #   run: |
-      #     git clone --recurse-submodules https://github.com/simone36050/mig.git
-      #     cd mig
-      #     git checkout headless2
-      #     cd ..
+      - name: Clone MIG
+        run: |
+          git clone --recurse-submodules https://github.com/simone36050/mig.git
+          cd mig
+          git checkout headless2
+          cd ..
         
       # - name: Generate Tests
       #   run: |
