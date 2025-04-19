@@ -33,7 +33,7 @@ jobs:
           ./build_and_run.sh
 
       - name: Wait for the server to start
-        run: sleep 5
+        run: sleep 30
 
       - name: Run Tests
         run: |
